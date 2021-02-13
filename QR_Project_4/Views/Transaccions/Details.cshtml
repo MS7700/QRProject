@@ -1,0 +1,51 @@
+﻿@model QR_Project_4.Models.Transaccion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Transacciones</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.Cedula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Cedula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado_Transaccion.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado_Transaccion.Descripcion)
+        </dd>
+
+    </dl>
+    @Html.Partial("_TransProd", (IEnumerable<QR_Project_4.Models.Rel_Transaccion_Producto>)ViewBag.Rel_Trans_Prod)
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Transaccion }, new { @class="btn btn-primary"})
+    @Html.ActionLink("Volver", "Index",null,new { @class= "btn btn-default" })
+</p>

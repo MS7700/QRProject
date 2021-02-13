@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_QR_1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="ID_Cliente" />
+    </Key>
+    <Property Name="ID_Cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cedula" Type="varchar" MaxLength="20" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Apellido" Type="varchar" MaxLength="50" />
+    <Property Name="Correo" Type="varchar" MaxLength="50" />
+    <Property Name="Telefono" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Departamento">
+    <Key>
+      <PropertyRef Name="ID_Departamento" />
+    </Key>
+    <Property Name="ID_Departamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="ID_Empleado" />
+    </Key>
+    <Property Name="ID_Empleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Apellido" Type="varchar" MaxLength="50" />
+    <Property Name="Cedula" Type="varchar" MaxLength="50" />
+    <Property Name="Telefono" Type="varchar" MaxLength="50" />
+    <Property Name="Correo" Type="varchar" MaxLength="50" />
+    <Property Name="ID_Departamento" Type="int" />
+  </EntityType>
+  <EntityType Name="Estado_QR">
+    <Key>
+      <PropertyRef Name="ID_Estado_QR" />
+    </Key>
+    <Property Name="ID_Estado_QR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Estado_Transaccion">
+    <Key>
+      <PropertyRef Name="ID_Estado_Transaccion" />
+    </Key>
+    <Property Name="ID_Estado_Transaccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="ID_Producto" />
+    </Key>
+    <Property Name="ID_Producto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Monto" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ID_Tipo_Producto" Type="int" />
+  </EntityType>
+  <EntityType Name="QR">
+    <Key>
+      <PropertyRef Name="ID_QR" />
+    </Key>
+    <Property Name="ID_QR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Cliente" Type="int" />
+    <Property Name="ID_Departamento" Type="int" />
+    <Property Name="ID_Tipo_QR" Type="int" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="Hora" Type="time" Precision="7" />
+    <Property Name="ID_Estado_QR" Type="int" />
+    <Property Name="Comentario" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Rel_Transaccion_Producto">
+    <Key>
+      <PropertyRef Name="ID_Transaccion" />
+      <PropertyRef Name="ID_Producto" />
+    </Key>
+    <Property Name="ID_Transaccion" Type="int" Nullable="false" />
+    <Property Name="ID_Producto" Type="int" Nullable="false" />
+    <Property Name="Cantidad_Producto" Type="int" />
+  </EntityType>
+  <EntityType Name="Respuesta_QR">
+    <Key>
+      <PropertyRef Name="ID_Respuesta_QR" />
+    </Key>
+    <Property Name="ID_Respuesta_QR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_QR" Type="int" />
+    <Property Name="ID_Empleado" Type="int" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="Detalle" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Tipo_Producto">
+    <Key>
+      <PropertyRef Name="ID_Tipo_Producto" />
+    </Key>
+    <Property Name="ID_Tipo_Producto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Tipo_QR">
+    <Key>
+      <PropertyRef Name="ID_Tipo_QR" />
+    </Key>
+    <Property Name="ID_Tipo_QR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Transaccion">
+    <Key>
+      <PropertyRef Name="ID_Transaccion" />
+    </Key>
+    <Property Name="ID_Transaccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Cliente" Type="int" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="ID_Estado_Transaccion" Type="int" />
+    <Property Name="Monto" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <Association Name="FK__Empleado__ID_Dep__59FA5E80">
+    <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamento">
+        <PropertyRef Name="ID_Departamento" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="ID_Departamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Producto__ID_Tip__49C3F6B7">
+    <End Role="Tipo_Producto" Type="Self.Tipo_Producto" Multiplicity="0..1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Producto">
+        <PropertyRef Name="ID_Tipo_Producto" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="ID_Tipo_Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QR__ID_Cliente__619B8048">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="QR" Type="Self.QR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ID_Cliente" />
+      </Principal>
+      <Dependent Role="QR">
+        <PropertyRef Name="ID_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QR__ID_Departame__628FA481">
+    <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
+    <End Role="QR" Type="Self.QR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamento">
+        <PropertyRef Name="ID_Departamento" />
+      </Principal>
+      <Dependent Role="QR">
+        <PropertyRef Name="ID_Departamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QR__ID_Estado_QR__6477ECF3">
+    <End Role="Estado_QR" Type="Self.Estado_QR" Multiplicity="0..1" />
+    <End Role="QR" Type="Self.QR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado_QR">
+        <PropertyRef Name="ID_Estado_QR" />
+      </Principal>
+      <Dependent Role="QR">
+        <PropertyRef Name="ID_Estado_QR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QR__ID_Tipo_QR__6383C8BA">
+    <End Role="Tipo_QR" Type="Self.Tipo_QR" Multiplicity="0..1" />
+    <End Role="QR" Type="Self.QR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_QR">
+        <PropertyRef Name="ID_Tipo_QR" />
+      </Principal>
+      <Dependent Role="QR">
+        <PropertyRef Name="ID_Tipo_QR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rel_Trans__ID_Pr__534D60F1">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="Rel_Transaccion_Producto" Type="Self.Rel_Transaccion_Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="ID_Producto" />
+      </Principal>
+      <Dependent Role="Rel_Transaccion_Producto">
+        <PropertyRef Name="ID_Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rel_Trans__ID_Tr__52593CB8">
+    <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="1" />
+    <End Role="Rel_Transaccion_Producto" Type="Self.Rel_Transaccion_Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transaccion">
+        <PropertyRef Name="ID_Transaccion" />
+      </Principal>
+      <Dependent Role="Rel_Transaccion_Producto">
+        <PropertyRef Name="ID_Transaccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Respuesta__ID_Em__68487DD7">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+    <End Role="Respuesta_QR" Type="Self.Respuesta_QR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="ID_Empleado" />
+      </Principal>
+      <Dependent Role="Respuesta_QR">
+        <PropertyRef Name="ID_Empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Respuesta__ID_QR__6754599E">
+    <End Role="QR" Type="Self.QR" Multiplicity="0..1" />
+    <End Role="Respuesta_QR" Type="Self.Respuesta_QR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QR">
+        <PropertyRef Name="ID_QR" />
+      </Principal>
+      <Dependent Role="Respuesta_QR">
+        <PropertyRef Name="ID_QR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacci__ID_Cl__4E88ABD4">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ID_Cliente" />
+      </Principal>
+      <Dependent Role="Transaccion">
+        <PropertyRef Name="ID_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacci__ID_Es__4F7CD00D">
+    <End Role="Estado_Transaccion" Type="Self.Estado_Transaccion" Multiplicity="0..1" />
+    <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado_Transaccion">
+        <PropertyRef Name="ID_Estado_Transaccion" />
+      </Principal>
+      <Dependent Role="Transaccion">
+        <PropertyRef Name="ID_Estado_Transaccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_QR_1ModelStoreContainer">
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estado_QR" EntityType="Self.Estado_QR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estado_Transaccion" EntityType="Self.Estado_Transaccion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QR" EntityType="Self.QR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rel_Transaccion_Producto" EntityType="Self.Rel_Transaccion_Producto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Respuesta_QR" EntityType="Self.Respuesta_QR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo_Producto" EntityType="Self.Tipo_Producto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo_QR" EntityType="Self.Tipo_QR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transaccion" EntityType="Self.Transaccion" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Empleado__ID_Dep__59FA5E80" Association="Self.FK__Empleado__ID_Dep__59FA5E80">
+      <End Role="Departamento" EntitySet="Departamento" />
+      <End Role="Empleado" EntitySet="Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Producto__ID_Tip__49C3F6B7" Association="Self.FK__Producto__ID_Tip__49C3F6B7">
+      <End Role="Tipo_Producto" EntitySet="Tipo_Producto" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QR__ID_Cliente__619B8048" Association="Self.FK__QR__ID_Cliente__619B8048">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="QR" EntitySet="QR" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QR__ID_Departame__628FA481" Association="Self.FK__QR__ID_Departame__628FA481">
+      <End Role="Departamento" EntitySet="Departamento" />
+      <End Role="QR" EntitySet="QR" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QR__ID_Estado_QR__6477ECF3" Association="Self.FK__QR__ID_Estado_QR__6477ECF3">
+      <End Role="Estado_QR" EntitySet="Estado_QR" />
+      <End Role="QR" EntitySet="QR" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QR__ID_Tipo_QR__6383C8BA" Association="Self.FK__QR__ID_Tipo_QR__6383C8BA">
+      <End Role="Tipo_QR" EntitySet="Tipo_QR" />
+      <End Role="QR" EntitySet="QR" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rel_Trans__ID_Pr__534D60F1" Association="Self.FK__Rel_Trans__ID_Pr__534D60F1">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="Rel_Transaccion_Producto" EntitySet="Rel_Transaccion_Producto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rel_Trans__ID_Tr__52593CB8" Association="Self.FK__Rel_Trans__ID_Tr__52593CB8">
+      <End Role="Transaccion" EntitySet="Transaccion" />
+      <End Role="Rel_Transaccion_Producto" EntitySet="Rel_Transaccion_Producto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Respuesta__ID_Em__68487DD7" Association="Self.FK__Respuesta__ID_Em__68487DD7">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Respuesta_QR" EntitySet="Respuesta_QR" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Respuesta__ID_QR__6754599E" Association="Self.FK__Respuesta__ID_QR__6754599E">
+      <End Role="QR" EntitySet="QR" />
+      <End Role="Respuesta_QR" EntitySet="Respuesta_QR" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacci__ID_Cl__4E88ABD4" Association="Self.FK__Transacci__ID_Cl__4E88ABD4">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Transaccion" EntitySet="Transaccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacci__ID_Es__4F7CD00D" Association="Self.FK__Transacci__ID_Es__4F7CD00D">
+      <End Role="Estado_Transaccion" EntitySet="Estado_Transaccion" />
+      <End Role="Transaccion" EntitySet="Transaccion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

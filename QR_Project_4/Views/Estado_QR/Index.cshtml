@@ -1,0 +1,38 @@
+﻿@model IEnumerable<QR_Project_4.Models.Estado_QR>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="title">
+    <h2>Estados de quejas y reclamaciones</h2>
+    <div>
+        @Html.ActionLink("Agregar", "Create", new { }, new { @class = "btn btn-success btn-xs" })
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            <div class="btn-group">
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID_Estado_QR }, new { @class = "btn btn-primary btn-xs" })
+                @Html.ActionLink("Details", "Details", new { id = item.ID_Estado_QR }, new { @class = "btn btn-default btn-xs" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID_Estado_QR }, new { @class = "btn btn-danger btn-xs" })
+            </div>
+            
+        </td>
+    </tr>
+}
+
+</table>

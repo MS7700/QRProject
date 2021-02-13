@@ -1,0 +1,38 @@
+﻿@model IEnumerable<QR_Project_4.Models.Rel_Transaccion_Producto>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Producto.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Producto.Tipo_Producto.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Producto.Monto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cantidad_Producto)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Producto.Nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Producto.Tipo_Producto.Descripcion)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Producto.Monto)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cantidad_Producto)
+    </td>
+</tr>
+}
+
+</table>

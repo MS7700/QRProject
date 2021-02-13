@@ -1,0 +1,50 @@
+﻿@model IEnumerable<QR_Project_4.Models.Rel_Transaccion_Producto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="title">
+    <h2>Detalles de transacciones</h2>
+    <div>
+        @Html.ActionLink("Agregar", "Create", new { }, new { @class = "btn btn-success btn-xs" })
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cantidad_Producto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Producto.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Transaccion.ID_Transaccion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cantidad_Producto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Producto.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Transaccion.ID_Transaccion)
+        </td>
+        <td>
+            <div class="btn-group">
+                @Html.ActionLink("Edit", "Edit", new { id_t = item.ID_Transaccion, id_p = item.ID_Producto }, new { @class = "btn btn-primary btn-xs" })
+                @Html.ActionLink("Details", "Details", new { id_t = item.ID_Transaccion, id_p = item.ID_Producto }, new { @class = "btn btn-default btn-xs" })
+                @Html.ActionLink("Delete", "Delete", new { id_t = item.ID_Transaccion, id_p = item.ID_Producto }, new { @class = "btn btn-danger btn-xs" })
+            </div>
+            
+        </td>
+    </tr>
+}
+
+</table>

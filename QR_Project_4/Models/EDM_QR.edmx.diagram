@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="682afe733a1c404e87fcb1b82876cae5" Name="Diagram1" ZoomLevel="33">
+        <EntityTypeShape EntityType="DB_QR_1Model1.AspNetRoles" Width="1.5" PointX="1.5" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_QR_1Model1.AspNetUserClaims" Width="1.5" PointX="6" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_QR_1Model1.AspNetUserLogins" Width="1.5" PointX="6" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_QR_1Model1.AspNetUsers" Width="1.5" PointX="3.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_QR_1Model1.Cliente" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_QR_1Model1.Departamento" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_QR_1Model1.Empleado" Width="1.5" PointX="6" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_QR_1Model1.Estado_QR" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_QR_1Model1.Estado_Transaccion" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_QR_1Model1.Producto" Width="1.5" PointX="6" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_QR_1Model1.QR" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_QR_1Model1.Rel_Transaccion_Producto" Width="1.5" PointX="8.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_QR_1Model1.Respuesta_QR" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_QR_1Model1.Tipo_Producto" Width="1.5" PointX="3.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_QR_1Model1.Tipo_QR" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_QR_1Model1.Transaccion" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
+        <AssociationConnector Association="DB_QR_1Model1.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_QR_1Model1.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_QR_1Model1.FK_Empleado_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_QR_1Model1.FK__QR__ID_Cliente__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_QR_1Model1.FK__Transacci__ID_Cl__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_QR_1Model1.FK__Empleado__ID_Dep__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_QR_1Model1.FK__QR__ID_Departame__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_QR_1Model1.FK__Respuesta__ID_Em__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_QR_1Model1.FK__QR__ID_Estado_QR__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_QR_1Model1.FK__Transacci__ID_Es__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_QR_1Model1.FK__Producto__ID_Tip__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_QR_1Model1.FK__Rel_Trans__ID_Pr__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_QR_1Model1.FK__QR__ID_Tipo_QR__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_QR_1Model1.FK__Respuesta__ID_QR__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_QR_1Model1.FK__Rel_Trans__ID_Tr__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_QR_1Model1.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

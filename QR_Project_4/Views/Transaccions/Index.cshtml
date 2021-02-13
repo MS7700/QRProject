@@ -1,0 +1,56 @@
+﻿@model IEnumerable<QR_Project_4.Models.Transaccion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="title">
+    <h2>Transacciones</h2>
+    <div>
+        @Html.ActionLink("Agregar", "Create", new { }, new { @class = "btn btn-success btn-xs" })
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Monto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente.Cedula)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado_Transaccion.Descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Monto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.Cedula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado_Transaccion.Descripcion)
+        </td>
+        <td>
+            <div class="btn-group">
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID_Transaccion }, new { @class = "btn btn-primary btn-xs" })
+                @Html.ActionLink("Details", "Details", new { id = item.ID_Transaccion }, new { @class = "btn btn-default btn-xs" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID_Transaccion }, new { @class = "btn btn-danger btn-xs" })
+            </div>
+            
+        </td>
+    </tr>
+}
+
+</table>

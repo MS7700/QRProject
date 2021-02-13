@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+@if (User.IsInRole("Administrador"))
+{
+    <h1>Bienvenido, administrador</h1>
+    <ul>
+        <li>@Html.ActionLink("Clientes", "Index", "Clientes", new { @class = "btn btn-default" })</li>
+        <li>@Html.ActionLink("Departamentos", "Index", "Departamentoes")</li>
+        <li>@Html.ActionLink("Empleados", "Index", "Empleadoes")</li>
+        <li>@Html.ActionLink("Estados de Quejas o Reclamaciones", "Index", "Estado_QR")</li>
+        <li>@Html.ActionLink("Estados de Transacciones", "Index", "Estado_Transaccion")</li>
+        <li>@Html.ActionLink("Productos", "Index", "Productoes")</li>
+        <li>@Html.ActionLink("Quejas y Reclamaciones", "Index", "QRs")</li>
+        <li>@Html.ActionLink("Detalles de Transacciones", "Index", "Rel_Transaccion_Producto")</li>
+        <li>@Html.ActionLink("Respuestas a Quejas y Reclamaciones", "Index", "Respuesta_QR")</li>
+        <li>@Html.ActionLink("Transacciones", "Index", "Transaccions")</li>
+        <li>@Html.ActionLink("Tipos de Productos", "Index", "Tipo_Producto")</li>
+        <li>@Html.ActionLink("Tipos de Quejas y Reclamaciones", "Index", "Tipo_QR")</li>
+    </ul>
+}
+else if (User.IsInRole("Usuario"))
+{
+    <h1>Bienvenido, usuario</h1>
+    <ul>
+        <li>@Html.ActionLink("Quejas y Reclamaciones", "Index", "QRs")</li>
+        <li>@Html.ActionLink("Respuestas a Quejas y Reclamaciones", "Index", "Respuesta_QR")</li>
+    </ul>
+}
+
